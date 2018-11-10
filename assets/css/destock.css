@@ -1,3 +1,7 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
 html, body {
   padding: 0px;
   width: 100%;
@@ -17,4 +21,57 @@ html, body {
   height: 100px;
   top: 10px;
   left: 10px;
+}
+
+
+#map-canvas {
+    height: 100%;
+    width: 100%;
+  }
+.map{
+  position: absolute;
+  top: 19%;
+  height: 50%;
+  width: 100%;
+}
+
+
+.btn-map {
+  position: relative;
+  right: -50%;
+  top: -25px;
+  background-color: #ff4b00;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 1px solid red;
+}
+.down{
+  position: relative;
+  left: 6px;
+  top: 18px;
+  font-size: 25em;
+  color: white;
+}
+.up{
+  position: relative;
+  left: 6px;
+  top: -6px;
+  font-size: 25em;
+  color: white;
+}
+.globe-down{
+  position: relative;
+  left: 16px;
+  top: -40px;
+  color: white;
+
+}
+
+.globe-up{
+  position: relative;
+  left: 16px;
+  top: -15px;
+  color: white;
+
 }
