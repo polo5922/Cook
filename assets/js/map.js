@@ -153,13 +153,14 @@
           mapStat = mapStat * -1;
           if(mapStat == 1){
             $("#map-canvas").slideDown(1000);
-            $(".down").removeClass("down").addClass("up");
-            $(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            //$(".down").removeClass("down").addClass("up");
+            //$(".fa-chevron-down").toogleClass("rotate");
+            $(".fa-chevron-down").addClass("rotate");
             $(".globe-down").removeClass("globe-down").addClass("globe-up");
           }else{
             $("#map-canvas").slideUp(1000);
-            $(".up").removeClass("up").addClass("down");
-            $(".fa-chevron-up").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            $(".fa-chevron-down").removeClass("rotate");
+            //$(".fa-chevron-up").removeClass("fa-chevron-up").addClass("fa-chevron-down");
             $(".globe-up").removeClass("globe-up").addClass("globe-down");
           }
           console.log(mapStat);
