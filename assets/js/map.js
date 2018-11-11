@@ -124,9 +124,10 @@
           console.log(this.name);
           console.log(getCountryCode(this.name));
           var cc = getCountryCode(this.name);
-          var flag = "<img src='https://www.countryflags.io/" + cc + "/flat/64.png'>";
+          var flag = "<img class='flag_img' src='https://www.countryflags.io/" + cc + "/flat/64.png'>";
           console.log(flag);
           $(".flag").html(flag);
+          $(".country").text(this.name);
         });
 
         country.setMap(map);
