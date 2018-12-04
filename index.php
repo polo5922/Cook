@@ -34,8 +34,31 @@
           <i class="fa fa-globe globe-down fa-2x" aria-hidden="true"></i>
         </div>
       </div>
-
     </div>
 
+
+    <div id="recete">
+      <?php
+        for($x = 1;$x <= 6;$x++)
+        {
+          echo "<div class='row'>";
+          for($y = 1;$y <= 3;$y++)
+          {
+            echo "<div class='col-sm-4'>
+                    <div class='container_recete'>
+                      <div class='recete_box'>
+                        <img src='assets/img/ui/blank.png' alt='' class='recete_img'>
+                        <span class='recete_title'>Recete n° ".$x*$y."</span>
+                      </div>
+                    </div>
+                  </div>";
+          }
+          echo "</div>";
+        }
+
+
+
+      ?>
+    </div>
   </body>
 </html>

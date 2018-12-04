@@ -19,3 +19,36 @@ html, body {
   top: 10px;
   left: 10px;
 }
+
+#recete{
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  height: 300px;
+
+}
+.row{
+  height: 100%;
+}
+
+.container_recete{
+  background-color: #ff7e06;
+  width: 100%;
+  height: 100%;
+  border-radius: 3%;
+}
+
+.recete_img{
+  width: 45%;
+  height: 75%;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+  border-radius: 3%;
+
+
+}
+
+.col-sm-4{
+  margin-bottom: 3%;
+}

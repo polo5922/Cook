@@ -103,6 +103,49 @@ html, body {
 
 }
 
+#recete{
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  height: 300px;
+  -webkit-transition: all 1.4s;
+  transition: all 1.4s;
+}
+#recete.push{
+  -moz-transition: all 0.8s linear;
+  -webkit-transition: all 0.8s linear;
+  transition: all 0.8s linear;
+  position: absolute;
+  top: 75%;
+  width: 100%;
+  height: 300px;
+
+}
+.row{
+  height: 100%;
+}
+
+.container_recete{
+  background-color: #ff7e06;
+  width: 100%;
+  height: 100%;
+  border-radius: 3%;
+}
+
+.recete_img{
+  width: 45%;
+  height: 75%;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+  border-radius: 3%;
+}
+
+.recete_title{
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+}
 
 .flag{
 

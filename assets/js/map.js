@@ -158,11 +158,13 @@
             //$(".fa-chevron-down").toogleClass("rotate");
             $(".fa-chevron-down").addClass("rotate");
             $(".globe-down").removeClass("globe-down").addClass("globe-up");
+            $("#recete").addClass("push");
           }else{
             $("#map-canvas").slideUp(1000);
             $(".fa-chevron-down").removeClass("rotate");
             //$(".fa-chevron-up").removeClass("fa-chevron-up").addClass("fa-chevron-down");
             $(".globe-up").removeClass("globe-up").addClass("globe-down");
+            $("#recete").removeClass("push");
           }
           console.log(mapStat);
 
