@@ -17,6 +17,19 @@
     <script src="assets\js\map.js" charset="utf-8"></script>
   </head>
   <body>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        function bdd(action){
+          $.post('backend/bdd.php',
+              {
+                  action: action
+              }, function(data) {
+                  console.log(data);
+            });
+          }
+        bdd("init");
+      });
+    </script>
     <div class="top">
       <img src="assets\img\ui\icon.svg" class="icon">
       <div class="coutry_container">
