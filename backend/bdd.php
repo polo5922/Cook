@@ -37,7 +37,7 @@ if($_POST['action'] == "init")
   }
 
   // sql to create table
-  $sql = "CREATE TABLE `Recette` (
+  $sql = "CREATE TABLE IF NOT EXISTS `Recette` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`Nom` TEXT NOT NULL,
 	`img_id` INT NOT NULL,
