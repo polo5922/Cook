@@ -15,19 +15,20 @@
     <script src="https://maps.google.com/maps/api/js?sensor=false" charset="utf-8"></script>
     <script src="assets\js\cc.js" charset="utf-8"></script>
     <script src="assets\js\map.js" charset="utf-8"></script>
+    <script src="assets\js\bdd.js" charset="utf-8"></script>
   </head>
   <body>
     <script type="text/javascript">
       $(document).ready(function(){
-        function bdd(action){
-          $.post('backend/bdd.php',
-              {
-                  action: action
-              }, function(data) {
-                  console.log(data);
-            });
-          }
+        $(".window").hide();
+        $(".float").click(function(){
+          $(".window").show(500);
+        });
+        $(".close-window").click(function(){
+          $(".window").hide(500);
+        });
         bdd("init");
+        //bdd("get","test");
       });
     </script>
     <div class="top">
@@ -73,5 +74,17 @@
 
       ?>
     </div>
+      <div class="float">
+        <i class="fa fa-plus my-float"></i>
+      </div>
+      <div class="window">
+        <i class="fa fa-close fa-3x close-window"></i>
+        <div class="title">
+
+        </div>
+        <div class="content">
+
+        </div>
+      </div>
   </body>
 </html>
