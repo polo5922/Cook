@@ -2,7 +2,7 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Cook</title>
+    <title>Cook ATiPique</title>
     <link rel="stylesheet" href="assets/api/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="assets/api/Materialize/css/materialize.css">
     <link rel="stylesheet" media="screen  and (max-width: 640px)"  href="assets/css/phone.css">
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div id="recete">
+    <div id="recette">
       <?php
         for($x = 1;$x <= 6;$x++)
         {
@@ -60,10 +60,10 @@
           for($y = 1;$y <= 3;$y++)
           {
             echo "<div class='col-sm-4'>
-                    <div class='container_recete'>
-                      <div class='recete_box'>
-                        <img src='assets/img/ui/blank.png' alt='' class='recete_img'>
-                        <span class='recete_title'>Recete n° ".$x*$y."</span>
+                    <div class='container_recette'>
+                      <div class='recette_box'>
+                        <img src='assets/img/ui/blank.png' alt='' class='recette_img'>
+                        <span class='recette_title'>Recette n° ".$x*$y."</span>
                       </div>
                     </div>
                   </div>";
