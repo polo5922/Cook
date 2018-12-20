@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Cook</title>
-    <link rel="stylesheet" media="screen  and (max-width: 640px)"  href="assets/css/phone.css">
-    <link rel="stylesheet" media="screen  and (min-width: 640px)"  href="assets/css/destock.css">
     <link rel="stylesheet" href="assets/api/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="assets/api/Materialize/css/materialize.css">
+    <link rel="stylesheet" media="screen  and (max-width: 640px)"  href="assets/css/phone.css">
+    <link rel="stylesheet" media="screen  and (min-width: 640px)"  href="assets/css/destock.css">
 
     <script src="assets\api\Jquery\jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="assets\api\Materialize\js\materialize.js" charset="utf-8"></script>
@@ -98,7 +98,7 @@
           </div>
           <div style="position:absolute;top:50%;width:50%;left:50%;">
             <span>dificulte</span>
-            <input type="range" name="" value="">
+            <input class="dif" type="range" name="" value="">
             <span for="coutry_input">pays</span>
             <select id="coutry_input" class="" name="">
               <option class="icons" disabled selected>Choose your option</option>
