@@ -40,13 +40,13 @@ if($_POST['action'] == "init")
   $sql = "CREATE TABLE IF NOT EXISTS `Recette` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`Nom` TEXT NOT NULL,
-	`img_id` INT NOT NULL,
 	`duree` INT NOT NULL,
 	`difficultee` INT NOT NULL,
 	`description` TEXT NOT NULL,
 	`quantite` INT NOT NULL,
 	`genre` INT NOT NULL,
-  `id.Pays` INT NOT NULL,
+  `Pays` TEXT NOT NULL,
+  `Utilisateur_id` INT NOT NULL,
   primary key (id)
 );";
 if ($conn->query($sql) === TRUE) {
@@ -54,7 +54,7 @@ if ($conn->query($sql) === TRUE) {
   } else {
       echo "Error creating table: " . $conn->error;
   }
-  
+
   $sql = "CREATE TABLE IF NOT EXISTS `Ingredient` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `ingredient` TEXT NOT NULL,
@@ -84,17 +84,7 @@ if ($conn->query($sql) === TRUE) {
   $sql = "CREATE TABLE IF NOT EXISTS `Note` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `note` FLOAT unsigned,
-  PRIMARY KEY (`id`)
-);";
-if ($conn->query($sql) === TRUE) {
-      echo "Table Recette created successfully";
-  } else {
-      echo "Error creating table: " . $conn->error;
-  }
-
-  $sql = "CREATE TABLE If NOT EXISTS `Pays` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `Nom` FLOAT unsigned NOT NULL,
+  `Utilisateur_id` INT,
   PRIMARY KEY (`id`)
 );";
 if ($conn->query($sql) === TRUE) {
@@ -116,9 +106,9 @@ if ($conn->query($sql) === TRUE) {
   }
 
   $sql = "CREATE TABLE If NOT EXISTS `Recette-note` (
-  `id.Recette` INT,
-  `id.Note` INT,
-  PRIMARY KEY (`id.Recette`,`id.Note`)
+  `Recette_id` INT,
+  `Note_id` INT,
+  PRIMARY KEY (`Recette_id`,`Note_id`)
 );";
 if ($conn->query($sql) === TRUE) {
       echo "Table Recette created successfully";
@@ -127,9 +117,9 @@ if ($conn->query($sql) === TRUE) {
   }
 
   $sql = "CREATE TABLE If NOT EXISTS `Recette-Ingredient` (
-  `id.Recette` INT,
-  `id.Ingredient` INT,
-  PRIMARY KEY (`id.Recette`,`id.Ingredient`)
+  `Recette_id` INT,
+  `Ingredient_id` INT,
+  PRIMARY KEY (`Recette_id`,`Ingredient_id`)
 );";
 
   if ($conn->query($sql) === TRUE) {
@@ -138,6 +128,33 @@ if ($conn->query($sql) === TRUE) {
       echo "Error creating table: " . $conn->error;
   }
 
+  $sql = "CREATE TABLE If NOT EXISTS `Recette-Ustensile` (
+  `Recette_id` INT,
+  `Ustensile_id` INT,
+  PRIMARY KEY (`Recette_id`,`Ustensile_id`)
+);";
+  if ($conn->query($sql) === TRUE) {
+      echo "Table Recette created successfully";
+  } else {
+      echo "Error creating table: " . $conn->error;
+  }
+
+  $sql = "CREATE TABLE If NOT EXISTS `img` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `lien` INT,
+    `Recette_id` INT,
+    PRIMARY KEY (`id`)
+  );";
+  if ($conn->query($sql) === TRUE) {
+      echo "Table Recette created successfully";
+  } else {
+      echo "Error creating table: " . $conn->error;
+  }
+
+
   $conn->close();
+}
+if($_POST['action'] == "add_recette"){
+
 }
 ?>
