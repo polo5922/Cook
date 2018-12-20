@@ -133,6 +133,10 @@
             <span>ingerdient</span>
             <br>
             <span>duree</span>
+            <br>
+              <span></span>
+              <genre></genre>
+            </br>
           </div>
           <div id="button_add">
 
