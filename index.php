@@ -16,6 +16,7 @@
     <script src="assets\js\cc.js" charset="utf-8"></script>
     <script src="assets\js\map.js" charset="utf-8"></script>
     <script src="assets\js\bdd.js" charset="utf-8"></script>
+    <script src="assets\js\coutry_input.js" charset="utf-8"></script>
   </head>
   <body>
     <script type="text/javascript">
@@ -50,7 +51,6 @@
       </div>
     </div>
 
-
     <div id="recete">
       <?php
         for($x = 1;$x <= 6;$x++)
@@ -80,10 +80,47 @@
       <div class="window">
         <i class="fa fa-close fa-3x close-window"></i>
         <div class="title">
-
+          <h3 style="position:relative;left:6%;padding:0px;margin:0px;width:300px;margin-top:20px;margin-bottom:20px;">Title</h3>
         </div>
         <div class="content">
+          <img style="position:absolute;padding:0px;left:30px;border-radius:10px" src="assets/img/ui/blank.png" alt="">
+          <div class="pic-container">
+          <ul id="img_list">
+            <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt=""></li>
+            <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt=""></li>
+            <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt=""></li>
+            <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt=""></li>
+          </ul>
+        </div>
+          <div style="position:absolute;top:50%;width:50%;">
+            <input type="text" name="Title" value="" placeholder="Title">
+            <textarea name="name" rows="8" cols="100" placeholder="Desc"></textarea>
+          </div>
+          <div style="position:absolute;top:50%;width:50%;left:50%;">
+            <span>dificulte</span>
+            <input type="range" name="" value="">
+            <span for="coutry_input">pays</span>
+            <select id="coutry_input" class="" name="">
+              <option class="icons" disabled selected>Choose your option</option>
+              <?php
+              $url = 'https://restcountries.eu/rest/v2/all'; // path to your JSON file
+              $data = file_get_contents($url); // put the contents of the file into a variable
+              $countries = json_decode($data); // decode the JSON feed
+              foreach ($countries as $countrie) {
+                echo '<option data-icon="'.$countrie->flag.'" value="'.$countrie->alpha2Code.'">'.$countrie->name.'</option>';
+              }
 
+
+                ?>
+            </select>
+            <br>
+            <span>ingerdient</span>
+            <br>
+            <span>duree</span>
+          </div>
+          <div id="button_add">
+
+          </div>
         </div>
       </div>
   </body>

@@ -188,3 +188,20 @@ html, body {
 .my-float{
 	margin-top:22px;
 }
+
+.pic-container{
+  position: absolute;
+  top: 100px;
+  left:600px;
+  width: 100px;
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+#img_list li img{
+  width: 80%;
+  height: auto;
+}
+#img_list li{
+  padding-bottom: 10px;
+}
