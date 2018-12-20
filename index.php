@@ -17,6 +17,7 @@
     <script src="assets\js\map.js" charset="utf-8"></script>
     <script src="assets\js\bdd.js" charset="utf-8"></script>
     <script src="assets\js\coutry_input.js" charset="utf-8"></script>
+    <script src="assets\js\dif_input.js" charset="utf-8"></script>
   </head>
   <body>
     <script type="text/javascript">
@@ -98,7 +99,22 @@
           </div>
           <div style="position:absolute;top:50%;width:50%;left:50%;">
             <span>dificulte</span>
-            <input class="dif" type="range" name="" value="">
+            <ul>
+              <li class="dif">
+                <div class="diff-block"></div>
+              </li>
+              <li class="dif">
+                <div class="diff-block"></div>
+              </li>
+              <li class="dif">
+                <div class="diff-block"></div>
+              </li>
+              <li class="dif">
+                <div class="diff-block"></div>
+              </li>
+            </ul>
+
+            <br>
             <span for="coutry_input">pays</span>
             <select id="coutry_input" class="" name="">
               <option class="icons" disabled selected>Choose your option</option>
