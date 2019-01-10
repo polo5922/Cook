@@ -54,7 +54,7 @@
 
     <div id="recette">
       <?php
-        for($x = 1;$x <= 6;$x++)
+        /*for($x = 1;$x <= 6;$x++)
         {
           echo "<div class='row'>";
           for($y = 1;$y <= 3;$y++)
@@ -72,7 +72,7 @@
         }
 
 
-
+        */
       ?>
     </div>
       <div class="float">
@@ -81,7 +81,7 @@
       <div class="window">
         <i class="fa fa-close fa-3x close-window"></i>
         <div class="title">
-          <h3 style="position:relative;left:6%;padding:0px;margin:0px;width:300px;margin-top:20px;margin-bottom:20px;">Title</h3>
+          <h3 style="position:relative;left:6%;padding:0px;margin:0px;width:300px;margin-top:20px;margin-bottom:20px;">Add recette</h3>
         </div>
         <div class="content">
           <img style="position:absolute;padding:0px;left:30px;border-radius:10px" src="assets/img/ui/blank.png" alt="">
@@ -93,27 +93,27 @@
             <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt=""></li>
           </ul>
         </div>
-          <div style="position:absolute;top:50%;width:50%;">
+          <div style="position:absolute;top:60%;width:50%;">
             <input type="text" name="Title" value="" placeholder="Title">
-            <textarea name="name" rows="8" cols="100" placeholder="Desc"></textarea>
+            <textarea name="name" rows="30" cols="100" placeholder="Desc"></textarea>
           </div>
-          <div style="position:absolute;top:50%;width:50%;left:50%;">
+          <div style="position:absolute;top:60%;width:50%;left:50%;">
             <span>dificulte</span>
             <ul>
               <li class="dif">
-                <div class="diff-block"></div>
+                <div class="diff-block-0"></div>
               </li>
               <li class="dif">
-                <div class="diff-block"></div>
+                <div class="diff-block-1"></div>
               </li>
               <li class="dif">
-                <div class="diff-block"></div>
+                <div class="diff-block-2"></div>
               </li>
               <li class="dif">
-                <div class="diff-block"></div>
+                <div class="diff-block-3"></div>
               </li>
             </ul>
-
+            <input type="text" class="dif-value" name="dif" value="" style="display:none;">
             <br>
             <span for="coutry_input">pays</span>
             <select id="coutry_input" class="" name="">
@@ -130,13 +130,14 @@
                 ?>
             </select>
             <br>
-            <span>ingerdient</span>
+            <!--<span>ingerdient</span>
             <br>
             <span>duree</span>
             <br>
               <span></span>
               <genre></genre>
             </br>
+          -->
           </div>
           <div id="button_add">
 

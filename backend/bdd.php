@@ -50,6 +50,7 @@ if($_POST['action'] == "init")
   primary key (id)
 );";
 if ($conn->query($sql) === TRUE) {
+      echo "\n";
       echo "Table Recette created successfully";
   } else {
       echo "Error creating table: " . $conn->error;
@@ -63,6 +64,7 @@ if ($conn->query($sql) === TRUE) {
   PRIMARY KEY (`id`)
 );";
 if ($conn->query($sql) === TRUE) {
+      echo "\n";
       echo "Table Recette created successfully";
   } else {
       echo "Error creating table: " . $conn->error;
@@ -76,6 +78,7 @@ if ($conn->query($sql) === TRUE) {
   PRIMARY KEY (`id`)
 );";
 if ($conn->query($sql) === TRUE) {
+        echo "\n";
       echo "Table Recette created successfully";
   } else {
       echo "Error creating table: " . $conn->error;
@@ -88,6 +91,7 @@ if ($conn->query($sql) === TRUE) {
   PRIMARY KEY (`id`)
 );";
 if ($conn->query($sql) === TRUE) {
+        echo "\n";
       echo "Table Recette created successfully";
   } else {
       echo "Error creating table: " . $conn->error;
@@ -100,6 +104,7 @@ if ($conn->query($sql) === TRUE) {
   PRIMARY KEY (`id`)
 );";
 if ($conn->query($sql) === TRUE) {
+        echo "\n";
       echo "Table Recette created successfully";
   } else {
       echo "Error creating table: " . $conn->error;
@@ -111,6 +116,7 @@ if ($conn->query($sql) === TRUE) {
   PRIMARY KEY (`Recette_id`,`Note_id`)
 );";
 if ($conn->query($sql) === TRUE) {
+        echo "\n";
       echo "Table Recette created successfully";
   } else {
       echo "Error creating table: " . $conn->error;
@@ -123,6 +129,7 @@ if ($conn->query($sql) === TRUE) {
 );";
 
   if ($conn->query($sql) === TRUE) {
+          echo "\n";
       echo "Table Recette created successfully";
   } else {
       echo "Error creating table: " . $conn->error;
@@ -134,6 +141,7 @@ if ($conn->query($sql) === TRUE) {
   PRIMARY KEY (`Recette_id`,`Ustensile_id`)
 );";
   if ($conn->query($sql) === TRUE) {
+          echo "\n";
       echo "Table Recette created successfully";
   } else {
       echo "Error creating table: " . $conn->error;
@@ -146,6 +154,7 @@ if ($conn->query($sql) === TRUE) {
     PRIMARY KEY (`id`)
   );";
   if ($conn->query($sql) === TRUE) {
+          echo "\n";
       echo "Table Recette created successfully";
   } else {
       echo "Error creating table: " . $conn->error;
