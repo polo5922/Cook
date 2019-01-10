@@ -103,7 +103,7 @@ html, body {
 
 }
 
-#recete{
+#recette{
   position: absolute;
   top: 30%;
   width: 100%;
@@ -111,7 +111,7 @@ html, body {
   -webkit-transition: all 1.4s;
   transition: all 1.4s;
 }
-#recete.push{
+#recette.push{
   -moz-transition: all 0.8s linear;
   -webkit-transition: all 0.8s linear;
   transition: all 0.8s linear;
@@ -125,14 +125,14 @@ html, body {
   height: 100%;
 }
 
-.container_recete{
+.container_recette{
   background-color: #ff7e06;
   width: 100%;
   height: 100%;
   border-radius: 3%;
 }
 
-.recete_img{
+.recette_img{
   width: 45%;
   height: 75%;
   margin-left: 15px;
@@ -141,7 +141,7 @@ html, body {
   border-radius: 3%;
 }
 
-.recete_title{
+.recette_title{
   color: white;
   font-size: 20px;
   font-family: sans-serif;
