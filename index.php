@@ -88,10 +88,10 @@
         <label for="file-input">
           <img style="position:absolute;padding:0px;left:30px;border-radius:10px" src="assets/img/ui/blank.png" alt="">
         </label>
-        <input type="file" onchange="readURL(this);" id="file-input" style="display:none;" name="" value="">
+        <input multiple type="file" id="file-input" style="display:none;" name="" value="">
           <div class="pic-container">
           <ul id="img_list">
-            <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt="" id="img-preview"></li>
+
           </ul>
         </div>
           <div style="position:absolute;top:60%;width:50%;">
@@ -144,18 +144,34 @@
         </div>
       </div>
       <script type="text/javascript">
-      function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+        function handleFileSelect(evt) {
+          $("#img-preview").remove();
+          var files = evt.target.files; // FileList object
 
-                reader.onload = function (e) {
-                    $('#img-preview')
-                        .attr('src', e.target.result);
-                };
+          // Loop through the FileList and render image files as thumbnails.
+          for (var i = 0, f; f = files[i]; i++) {
 
-                reader.readAsDataURL(input.files[0]);
+            // Only process image files.
+            if (!f.type.match('image.*')) {
+              continue;
             }
+
+            var reader = new FileReader();
+
+            // Closure to capture the file information.
+            reader.onload = (function(theFile) {
+              return function(e) {
+                var html = '<li id="img-preview"><img style="border-radius:10px;" src="'+e.target.result+'" alt=""></li>';
+                $("#img_list").append(html);
+              };
+            })(f);
+
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(f);
+          }
         }
+
+        document.getElementById('file-input').addEventListener('change', handleFileSelect, false);
       </script>
   </body>
 </html>
