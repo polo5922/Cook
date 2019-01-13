@@ -33,6 +33,7 @@
         //bdd("get","test");
       });
     </script>
+
     <div class="top">
       <img src="assets\img\ui\icon.svg" class="icon">
       <div class="coutry_container">
@@ -84,13 +85,13 @@
           <h3 style="position:relative;left:6%;padding:0px;margin:0px;width:300px;margin-top:20px;margin-bottom:20px;">Add recette</h3>
         </div>
         <div class="content">
+        <label for="file-input">
           <img style="position:absolute;padding:0px;left:30px;border-radius:10px" src="assets/img/ui/blank.png" alt="">
+        </label>
+        <input type="file" onchange="readURL(this);" id="file-input" style="display:none;" name="" value="">
           <div class="pic-container">
           <ul id="img_list">
-            <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt=""></li>
-            <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt=""></li>
-            <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt=""></li>
-            <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt=""></li>
+            <li><img style="border-radius:10px;" src="assets/img/ui/blank.png" alt="" id="img-preview"></li>
           </ul>
         </div>
           <div style="position:absolute;top:60%;width:50%;">
@@ -139,10 +140,22 @@
             </br>
           -->
           </div>
-          <div id="button_add">
-
-          </div>
+          <button type="button" name="button" style="position:absolute;top:90%;left: 90%;;">Valider</button>
         </div>
       </div>
+      <script type="text/javascript">
+      function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-preview')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+      </script>
   </body>
 </html>
