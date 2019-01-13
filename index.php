@@ -95,8 +95,8 @@
           </ul>
         </div>
           <div style="position:absolute;top:60%;width:50%;">
-            <input type="text" name="Title" value="" placeholder="Title">
-            <textarea name="name" rows="30" cols="100" placeholder="Desc"></textarea>
+            <input id="title_add" type="text" name="Title" value="" placeholder="Title">
+            <textarea id="desc_add" name="name" rows="30" cols="100" placeholder="Desc"></textarea>
           </div>
           <div style="position:absolute;top:60%;width:50%;left:50%;">
             <span>dificulte</span>
@@ -140,7 +140,7 @@
             </br>
           -->
           </div>
-          <button type="button" name="button" style="position:absolute;top:90%;left: 90%;;">Valider</button>
+          <button type="button" name="button" style="position:absolute;top:90%;left: 90%;;" id="button_add">Valider</button>
         </div>
       </div>
       <script type="text/javascript">
@@ -172,6 +172,86 @@
         }
 
         document.getElementById('file-input').addEventListener('change', handleFileSelect, false);
+      </script>
+
+      <script type="text/javascript">
+        $("#button_add").click(function(){
+          var property = document.getElementById('file-input').files[0];
+          var image_name = property.name;
+          var image_extension = image_name.split('.').pop().toLowerCase();
+          if(jQuery.inArray(image_extension, ['gif','png','jpg','jpeg']) == -1)
+          {
+            alert('invalid image type');
+          }
+          var image_size = property.size;
+          if(image_size > 20000000000000000000000000000000000000)
+          {
+            alert('image is to big');
+          }
+          else
+          {
+            console.log(property);
+            var desc = $("#desc_add").val();
+            console.log(desc);
+            if(desc == null){
+              alert("la description est vide");
+            }
+            var title = $("#title_add").val();
+            console.log(title);
+            if(title == null){
+              alert("le titre est vide");
+            }
+            var diff = $("#dif-value").val();
+            console.log(diff);
+            if (diff == null) {
+              alert("il n'y a pas de difficultée selectionée");
+            }
+
+            var country = $("#coutry_input").val();
+            if(country == null){
+              alert("il n'y a pas de pays selectionée")
+            }
+              var form_data = new FormData();
+              form_data.append("file", property);
+              form_data.append("title",title);
+              form_data.append("desc",desc);
+              form_data.append("diff",diff);
+              form_data.append("country",country);
+              form_data.append("action","add_recette");
+              if(desc != null){
+                if(title != null){
+                  if(country != null){
+                    if(diff != null){
+                      if(property != null){
+                        $.ajax({
+                          url: "backend/bdd.php",
+                          method: "POST",
+                          data: form_data,
+                          contentType:false,
+                          cache:false,
+                          processData:false,
+                          success:function(data)
+                          {
+                            console.log("succes");
+                            //$("#evenement_container").remove();
+                            //$("#evenement_cc").html(data);
+                          }
+                        })
+                      }
+                    }
+                  }
+
+                }
+              }
+          }
+        });
+
+
+
+
+
+
+
       </script>
   </body>
 </html>

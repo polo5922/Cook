@@ -164,6 +164,60 @@ if ($conn->query($sql) === TRUE) {
   $conn->close();
 }
 if($_POST['action'] == "add_recette"){
+  if($_FILES["file"]["name"] != '')
+  {
+    $test = explode(".",$_FILES["file"]["name"]);
+    $extension = end($test);
+    $name = rand(1,9999) . '.' . $extension;
+    $location = '../img/recette/'.$name;
+    $move = './'.$location;
+    move_uploaded_file($_FILES["file"]["tmp_name"],'../'.$location);
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "cook";
 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "INSERT INTO recette (Nom, difficultee, description,Pays)
+    VALUES ('.$_POST["title"].', '.$_POST["diff"].', '.$_POST["desc"].','.$_POST["country"].')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+        $last_id = $conn->insert_id;
+        $conn->close();
+          $servername = "localhost";
+          $username = "root";
+          $password = "";
+          $dbname = "cook";
+
+          // Create connection
+          $conn = new mysqli($servername, $username, $password, $dbname);
+          // Check connection
+          if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
+          }
+
+          $sql = "INSERT INTO img (lien, Recette_id)
+          VALUES ('.$name.', '.$last_id.')";
+
+          if ($conn->query($sql) === TRUE) {
+              echo "New record created successfully";
+          } else {
+              echo "Error: " . $sql . "<br>" . $conn->error;
+          }
+
+          $conn->close();
+
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
 }
 ?>
