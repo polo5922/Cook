@@ -22,13 +22,18 @@
   <body>
     <script type="text/javascript">
       $(document).ready(function(){
+        $(".window-add").hide();
         $(".window").hide();
         $(".float").click(function(){
-          $(".window").show(500);
+          $(".window-add").show(500);
         });
         $(".close-window").click(function(){
           $(".window").hide(500);
         });
+        $(".close-window-add").click(function(){
+          $(".window-add").hide(500);
+        });
+
         bdd("init");
         //bdd("get","test");
       });
@@ -53,34 +58,118 @@
       </div>
     </div>
 
-    <div id="recette">
+    <div class="recette">
       <?php
-        /*for($x = 1;$x <= 6;$x++)
-        {
+
           echo "<div class='row'>";
-          for($y = 1;$y <= 3;$y++)
-          {
-            echo "<div class='col-sm-4'>
-                    <div class='container_recette'>
-                      <div class='recette_box'>
-                        <img src='assets/img/ui/blank.png' alt='' class='recette_img'>
-                        <span class='recette_title'>Recette n° ".$x*$y."</span>
-                      </div>
-                    </div>
-                  </div>";
+          $servername = "localhost";
+          $username = "root";
+          $password = "";
+          $dbname = "cook";
+
+          // Create connection
+          $conn = new mysqli($servername, $username, $password, $dbname);
+          // Check connection
+          if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
           }
+
+          $sql = "SELECT id FROM recette";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+              // output data of each row
+              while($row = $result->fetch_assoc()) {
+                $id=$row["id"];
+                $sql2 = "SELECT lien FROM img WHERE Recette_id=$id";
+                $sql3 = "SELECT Nom From recette WHERE id=$id";
+                echo "<div class='col-sm-4'>
+                <div onclick='recette(".$row["id"].")' style='cursor:pointer' class='container_recette'>
+                <div class='recette_box'>
+                ";
+
+                $result2 = $conn->query($sql2);
+                while($row2 = $result2->fetch_assoc()){
+                  echo "<img src='assets/img/recette/".$row2["lien"]."' alt='' class='recette_img'>";
+                }
+
+                $result3 = $conn->query($sql3);
+                while($row3 = $result3->fetch_assoc()){
+                  echo "<span class='recette_title'>".$row3["Nom"]."</span>";
+                }
+
+                echo "</div>
+                      </div>
+                      </div>";
+              }
+          } else {
+              echo "0 results";
+          }
+          $conn->close();
+
+
           echo "</div>";
-        }
 
-
-        */
       ?>
+      <script type="text/javascript">
+      function recette(id){
+        $(".recette-"+id).show(500);
+        console.log(id);
+      }
+      </script>
     </div>
       <div class="float">
         <i class="fa fa-plus my-float"></i>
       </div>
-      <div class="window">
-        <i class="fa fa-close fa-3x close-window"></i>
+      <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "cook";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT id, Nom, description,difficultee FROM recette";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+              $id=$row["id"];
+              $sql2 = "SELECT lien FROM img WHERE Recette_id=$id";
+              echo "<div class='window recette-";
+              echo $row['id'];
+              echo "'>
+              <i class='fa fa-close fa-3x close-window'></i>";
+              echo "<div class='title'>
+                <h3 style='position:relative;left:6%;padding:0px;margin:0px;width:300px;margin-top:20px;margin-bottom:20px;'>".$row["Nom"]."</h3>
+              </div>
+              <div class='content'>";
+              echo "<p class='diff_recette'> difficultée de la recette : ";
+              echo $row['difficultee'];
+              echo "/4</p>";
+              echo "<p class='desc_recette'>";
+              echo $row['description'];
+              echo "</p>";
+
+              $result2 = $conn->query($sql2);
+              while($row2 = $result2->fetch_assoc()){
+                echo "<img style='position:absolute;padding:0px;left:30px;border-radius:10px;width:50%;height:50%;' src='assets/img/recette/".$row2["lien"]."' alt=''>";
+              }
+              echo "</div>";
+              echo "</div>";
+            }
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
+        ?>
+      <div class="window-add">
+        <i class="fa fa-close fa-3x close-window-add"></i>
         <div class="title">
           <h3 style="position:relative;left:6%;padding:0px;margin:0px;width:300px;margin-top:20px;margin-bottom:20px;">Add recette</h3>
         </div>
@@ -114,7 +203,7 @@
                 <div class="diff-block-3"></div>
               </li>
             </ul>
-            <input type="text" class="dif-value" name="dif" value="" style="display:none;">
+            <input type="text" class="dif-value" name="dif" value="3" style="display:none;">
             <br>
             <span for="coutry_input">pays</span>
             <select id="coutry_input" class="" name="">
@@ -201,7 +290,7 @@
             if(title == null){
               alert("le titre est vide");
             }
-            var diff = $("#dif-value").val();
+            var diff = $(".dif-value").val();
             console.log(diff);
             if (diff == null) {
               alert("il n'y a pas de difficultée selectionée");
@@ -232,7 +321,8 @@
                           processData:false,
                           success:function(data)
                           {
-                            console.log("succes");
+                            $("#result_reqst").html(data);
+
                             //$("#evenement_container").remove();
                             //$("#evenement_cc").html(data);
                           }
@@ -253,5 +343,7 @@
 
 
       </script>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <p id="result_reqst"></p>
   </body>
 </html>

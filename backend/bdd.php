@@ -149,7 +149,7 @@ if ($conn->query($sql) === TRUE) {
 
   $sql = "CREATE TABLE If NOT EXISTS `img` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `lien` INT,
+    `lien` TEXT,
     `Recette_id` INT,
     PRIMARY KEY (`id`)
   );";
@@ -162,16 +162,18 @@ if ($conn->query($sql) === TRUE) {
 
 
   $conn->close();
+  die();
 }
-if($_POST['action'] == "add_recette"){
+
+if($_POST['action'] == "add_recette" and $_POST['action'] != "init"){
   if($_FILES["file"]["name"] != '')
   {
     $test = explode(".",$_FILES["file"]["name"]);
     $extension = end($test);
     $name = rand(1,9999) . '.' . $extension;
-    $location = '../img/recette/'.$name;
+    $location = '../assets/img/recette/'.$name;
     $move = './'.$location;
-    move_uploaded_file($_FILES["file"]["tmp_name"],'../'.$location);
+    move_uploaded_file($_FILES["file"]["tmp_name"],'./'.$location);
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -184,19 +186,13 @@ if($_POST['action'] == "add_recette"){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO recette (Nom, difficultee, description,Pays)
-    VALUES ('.$_POST["title"].', '.$_POST["diff"].', '.$_POST["desc"].','.$_POST["country"].')";
+    $sql = "INSERT INTO recette (Nom,duree, difficultee,description,quantite,genre,Pays,Utilisateur_id)
+    VALUES ('".$_POST["title"]."','1', '".$_POST["diff"]."', '".$_POST["desc"]."','1','1','".$_POST["country"]."','1')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
         $last_id = $conn->insert_id;
-        $conn->close();
-          $servername = "localhost";
-          $username = "root";
-          $password = "";
-          $dbname = "cook";
 
-          // Create connection
           $conn = new mysqli($servername, $username, $password, $dbname);
           // Check connection
           if ($conn->connect_error) {
@@ -204,20 +200,21 @@ if($_POST['action'] == "add_recette"){
           }
 
           $sql = "INSERT INTO img (lien, Recette_id)
-          VALUES ('.$name.', '.$last_id.')";
+          VALUES ('".$name."', '".$last_id."')";
 
           if ($conn->query($sql) === TRUE) {
               echo "New record created successfully";
           } else {
+            echo "<br>";
               echo "Error: " . $sql . "<br>" . $conn->error;
           }
 
-          $conn->close();
 
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
     $conn->close();
+  }
 }
 ?>

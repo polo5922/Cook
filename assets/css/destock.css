@@ -25,13 +25,14 @@ html, body {
 
 
 #map-canvas {
-    height: 100%;
+    height: 50%;
     width: 100%;
-  }
+}
+
 .map{
   position: absolute;
   top: 19%;
-  height: 50%;
+  height: 100%;
   width: 100%;
 }
 
@@ -103,7 +104,7 @@ html, body {
 
 }
 
-#recette{
+.recette{
   position: absolute;
   top: 30%;
   width: 100%;
@@ -111,7 +112,7 @@ html, body {
   -webkit-transition: all 1.4s;
   transition: all 1.4s;
 }
-#recette.push{
+.recette.push{
   -moz-transition: all 0.8s linear;
   -webkit-transition: all 0.8s linear;
   transition: all 0.8s linear;
@@ -165,7 +166,7 @@ html, body {
   cursor: pointer;
 }
 
-.window{
+.window, .window-add{
   position:fixed;
 	width:55%;
 	height:75%;
@@ -177,7 +178,7 @@ html, body {
 	box-shadow: 4px 4px 3px #999;
 }
 
-.close-window{
+.close-window, .close-window-add{
   position: absolute;
   top: 10px;
   right: 30px;
@@ -219,4 +220,15 @@ html, body {
   color: #fff;
   font-weight: bold;
   background: #999;
+}
+
+.desc_recette{
+  position: relative;
+  left: 55%;
+  top: 30px;
+}
+.diff_recette{
+  position: relative;
+  left: 30%;
+  top: -50px;
 }
